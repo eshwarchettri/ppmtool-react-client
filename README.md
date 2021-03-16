@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+First install create reat app using below command 
+npm i -g create-react-app 
+
+Then crrate the workspace using below command 
+create-react-app ppmtool-react-client (project name)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
