@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProject } from "../../actions/projectActions";
 
 class AddProject extends Component {
   constructor() {
@@ -16,17 +19,17 @@ class AddProject extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-onSubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
-const project = {
-    projectName: this.state.projectName,
-    projectIdentifier: this.state.projectIdentifier,
-    description: this.state.description,
-    startDate: this.state.startDate,
-    endDate: this.state.endDate
-}
-console.log(project);
-}
+    const project = {
+      projectName: this.state.projectName,
+      projectIdentifier: this.state.projectIdentifier,
+      description: this.state.description,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+    };
+    this.props.createProject(project, this.props.history);
+  }
   render() {
     return (
       <div className="project">
@@ -37,7 +40,7 @@ console.log(project);
                 Create / Edit Project form
               </h5>
               <hr />
-              <form onSubmit= {this.onSubmit}>
+              <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -90,7 +93,7 @@ console.log(project);
 
                 <input
                   type="submit"
-                  className="btn btn-primary btn-block mt-4" 
+                  className="btn btn-primary btn-block mt-4"
                 />
               </form>
             </div>
@@ -100,4 +103,9 @@ console.log(project);
     );
   }
 }
-export default AddProject;
+
+AddProject.propTypes = {
+  createProject: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createProject })(AddProject);
