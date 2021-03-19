@@ -87,3 +87,6 @@ install redux react-redux and redux-thunk --> State management
 
 install axios for CRUD operation
 ### `npm i axios`
+
+install classnames for validations
+### `npm i classnames`
